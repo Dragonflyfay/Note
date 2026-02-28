@@ -3,12 +3,32 @@
 2. 键不能重复，值可以重复
 3. 键和值是一一对应的，每一个值只能找到自己对应的值
 4. 键+值这个整体成为“键值对”或者“键值对对象”，**Entry对象**
-## Map常见API
+
+## **Map常见API**
 ![alt text](image-14.png)
 put方法返回值：
 - 如果添加的键已存在，则返回被覆盖的值（原本的值）
 - 如果添加的键不存在，返回null
+
 remove返回值：根据键，返回被删除的值
+
+
+```java
+V getOrDefault(Object key, V defaultValue)
+//Map中有该Key,返回对应value,若没有，返回defaultValue
+```
+```java
+V merge(K key, V value, BiFunction<? super V, ? super V, ? extends V> remappingFunction)
+//key:要操作的键
+//value:要与旧值合并的新值（若key不存在则作为初始值）
+//remappingFunction:操作函数
+   //Integer::sum    :求和
+```
+```java
+V computeIfAbsent(K key, Function<? super K, ? extends V> mappingFunction)
+//如果key不存在，就用mappingFunction计算并放入
+//返回map的值
+``` 
 ## Map三种遍历方式
 - 键找值
 ```java
